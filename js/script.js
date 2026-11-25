@@ -120,6 +120,7 @@ function startAutoScroll() {
   if (autoScrollId) return;
   autoScrollPos = window.scrollY;
   autoScrollLast = 0;
+  document.documentElement.style.scrollBehavior = "auto"; // smooth scrolling cancels each frame's scrollTo on mobile
   scrollBtn.classList.add("playing");
   scrollBtn.classList.remove("muted");
   autoScrollId = requestAnimationFrame(autoScrollStep);
@@ -128,6 +129,7 @@ function startAutoScroll() {
 function stopAutoScroll() {
   cancelAnimationFrame(autoScrollId);
   autoScrollId = null;
+  document.documentElement.style.scrollBehavior = "";
   scrollBtn.classList.remove("playing");
   scrollBtn.classList.add("muted");
 }
