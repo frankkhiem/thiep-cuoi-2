@@ -77,7 +77,7 @@ document.getElementById("gift-open").addEventListener("click", () => {
 document.getElementById("gift-back").addEventListener("click", () => (giftScreen.hidden = true));
 
 // ======= LỜI CHÚC (RSVP) =======
-// Chưa có nơi nhận dữ liệu: chỉ hiện thông báo cảm ơn.
+const RSVP_URL = "https://script.google.com/macros/s/AKfycbxiGsEAmDlejsOaUEmfg2yh28nUx0FEarsgwuh1ccpmPjphZNvqi43uRiL0uSA5wq6wvw/exec";
 const rsvpForm = document.getElementById("rsvp-form");
 const rsvpAttend = rsvpForm.elements["attend"];
 const rsvpNo = [...rsvpAttend].find((cb) => cb.value === "khong");
@@ -95,8 +95,19 @@ rsvpForm.addEventListener("submit", (e) => {
   const picked = [...rsvpAttend].some((cb) => cb.checked);
   document.getElementById("rsvp-error").hidden = picked;
   if (!picked) return;
-  rsvpForm.querySelector(".rsvp-submit").hidden = true;
-  document.getElementById("rsvp-thanks").hidden = false;
+  const btn = rsvpForm.querySelector(".rsvp-submit");
+  btn.disabled = true;
+  const data = new URLSearchParams();
+  data.append("side", "nhatrai");
+  data.append("name", rsvpForm.elements["name"].value);
+  data.append("attend", [...rsvpAttend].filter((cb) => cb.checked).map((cb) => cb.parentElement.textContent.trim()).join("\n"));
+  data.append("message", rsvpForm.elements["message"].value);
+  fetch(RSVP_URL, { method: "POST", mode: "no-cors", body: data })
+    .catch(() => {})
+    .finally(() => {
+      btn.hidden = true;
+      document.getElementById("rsvp-thanks").hidden = false;
+    });
 });
 
 // ======= BẬT / TẮT NHẠC =======
