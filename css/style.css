@@ -801,19 +801,19 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: url("../images/nen/nen_laptop.png") center / contain no-repeat;
+  background: url("../images/nen/nen_laptop.jpg") center / contain no-repeat;
 }
 @media (min-width: 1921px) {
-  .gift { aspect-ratio: 1376 / 768; background-image: url("../images/nen/nen_pc.png"); }
+  .gift { aspect-ratio: 1376 / 768; background-image: url("../images/nen/nen_pc.jpg"); }
 }
 @media (min-width: 1025px) and (max-width: 1920px) {
-  .gift { aspect-ratio: 1200 / 896; background-image: url("../images/nen/nen_ipad.png"); }
+  .gift { aspect-ratio: 1200 / 896; background-image: url("../images/nen/nen_ipad.jpg"); }
 }
 @media (max-width: 1024px) {
-  .gift { aspect-ratio: 1200 / 896; background-image: url("../images/nen/nen_ipad.png"); }
+  .gift { aspect-ratio: 1200 / 896; background-image: url("../images/nen/nen_ipad.jpg"); }
 }
 @media (max-width: 480px) {
-  .gift { aspect-ratio: 768 / 1376; background-image: url("../images/nen/nen_mobile.png"); }
+  .gift { aspect-ratio: 768 / 1376; background-image: url("../images/nen/nen_mobile.jpg"); }
 }
 .gift-panel {
   position: relative;
@@ -1051,7 +1051,8 @@ main#invitation { overflow-x: clip; }
   .cd-box span { font-size: 1.5rem; }
   .section { padding: 3rem 1.2rem; }
   .section-title { margin-bottom: 1.6rem; }
-  .event-card, .gift-card { padding: 1.4rem 1.1rem; }
+  .event-card { padding: 2.2rem 2.6rem; }
+  .gift-card { padding: 1.8rem 1.6rem; }
   .event-card h3 { font-size: 1.3rem; }
   .gift-card img { width: 150px; }
   .footer-thanks { font-size: 2.4rem; }

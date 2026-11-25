@@ -13,6 +13,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Carattere&family=Tapestry&family=Fuzzy+Bubbles:wght@400;700&family=Dancing+Script:wght@500;600&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
@@ -54,7 +55,7 @@
   </div>
 
   <!-- Nhạc nền: file nằm trong thư mục mp3/ -->
-  <audio id="bg-music" loop src="mp3/Christina%20Perri%20-%20A%20Thousand%20Years.mp3"></audio>
+  <audio id="bg-music" loop preload="none" src="mp3/Christina%20Perri%20-%20A%20Thousand%20Years.mp3"></audio>
   <button id="music-btn" class="music-btn" title="Bật / tắt nhạc" hidden>♪</button>
   <button id="scroll-btn" class="music-btn scroll-btn" title="Bật / tắt tự động cuộn" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6.5 12 12l6-5.5"/><path d="M6 12.5 12 18l6-5.5"/></svg></button>
 
@@ -192,13 +193,13 @@
     <section class="section album">
       <h2 class="section-title script" data-aos="fade-up">Khoảnh khắc</h2>
       <div class="gallery">
-        <img src="images/anh_cuoi/VYK01081.jpg" alt="Ảnh cưới 1" data-aos="zoom-in" />
-        <img src="images/anh_cuoi_2/photo_2026-11-25_01-44-42.jpg" alt="Ảnh cưới 2" data-aos="zoom-in" />
-        <img src="images/anh_cuoi/VYK00911.jpg" alt="Ảnh cưới 3" data-aos="zoom-in" />
-        <img src="images/anh_cuoi/VYK00464.jpg" alt="Ảnh cưới 4" data-aos="zoom-in" />
-        <img src="images/anh_cuoi/VYK00789.jpg" alt="Ảnh cưới 5" data-aos="zoom-in" />
-        <img src="images/anh_cuoi/VYK01527.jpg" alt="Ảnh cưới 6" data-aos="zoom-in" />
-        <img src="images/anh_cuoi/VYK01558.jpg" alt="Ảnh cưới 7" data-aos="zoom-in" />
+        <img src="images/anh_cuoi_small/VYK01081.jpg" data-full="images/anh_cuoi/VYK01081.jpg" alt="Ảnh cưới 1" data-aos="zoom-in" loading="lazy" decoding="async" />
+        <img src="images/anh_cuoi_small/VYK00300.jpg" data-full="images/anh_cuoi/VYK00300.jpg" alt="Ảnh cưới 2" data-aos="zoom-in" loading="lazy" decoding="async" />
+        <img src="images/anh_cuoi_small/VYK00911.jpg" data-full="images/anh_cuoi/VYK00911.jpg" alt="Ảnh cưới 3" data-aos="zoom-in" loading="lazy" decoding="async" />
+        <img src="images/anh_cuoi_small/VYK00464.jpg" data-full="images/anh_cuoi/VYK00464.jpg" alt="Ảnh cưới 4" data-aos="zoom-in" loading="lazy" decoding="async" />
+        <img src="images/anh_cuoi_small/VYK00789.jpg" data-full="images/anh_cuoi/VYK00789.jpg" alt="Ảnh cưới 5" data-aos="zoom-in" loading="lazy" decoding="async" />
+        <img src="images/anh_cuoi_small/VYK01527.jpg" data-full="images/anh_cuoi/VYK01527.jpg" alt="Ảnh cưới 6" data-aos="zoom-in" loading="lazy" decoding="async" />
+        <img src="images/anh_cuoi_small/VYK01558.jpg" data-full="images/anh_cuoi/VYK01558.jpg" alt="Ảnh cưới 7" data-aos="zoom-in" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -260,7 +261,7 @@
 
   </main>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="js/script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>

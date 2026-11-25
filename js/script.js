@@ -185,8 +185,12 @@ scrollBtn.addEventListener("click", () => (autoScrollId ? stopAutoScroll() : sta
 
   function show(i, dir = 1) {
     current = (i + imgs.length) % imgs.length;
+    const target = current;
     view.src = imgs[current].src;
     view.alt = imgs[current].alt;
+    const full = new Image();
+    full.onload = () => { if (current === target) view.src = imgs[target].dataset.full; };
+    full.src = imgs[current].dataset.full;
     view.style.setProperty("--dir", dir > 0 ? "40px" : "-40px");
     view.classList.remove("lb-in");
     void view.offsetWidth;
@@ -203,6 +207,15 @@ scrollBtn.addEventListener("click", () => (autoScrollId ? stopAutoScroll() : sta
   }
 
   imgs.forEach((img, i) => img.addEventListener("click", () => open(i)));
+
+  let preloadIdx = 0;
+  function preloadNext() {
+    if (preloadIdx >= imgs.length) return;
+    const img = new Image();
+    img.onload = img.onerror = () => { preloadIdx++; preloadNext(); };
+    img.src = imgs[preloadIdx].dataset.full;
+  }
+  window.addEventListener("load", () => setTimeout(preloadNext, 1500));
   box.querySelector(".lb-close").addEventListener("click", close);
   box.querySelector(".lb-prev").addEventListener("click", (e) => { e.stopPropagation(); show(current - 1, -1); });
   box.querySelector(".lb-next").addEventListener("click", (e) => { e.stopPropagation(); show(current + 1, 1); });
