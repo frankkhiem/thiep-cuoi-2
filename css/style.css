@@ -603,10 +603,28 @@ img { max-width: 100%; display: block; }
   background: #e6dbc1;
 }
 .event-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 360px);
   justify-content: center;
   gap: 1.5rem;
+}
+.event-grid > * { width: 100%; max-width: 360px; }
+.dancer { display: flex; align-items: center; justify-content: center; }
+@media (max-width: 760px) {
+  .event-grid { grid-template-columns: minmax(0, 360px); }
+  .dancer { order: 1; }
+}
+.dancer-img {
+  width: 200px;
+  height: auto;
+  transform-origin: 50% 100%;
+  animation: dance 1.6s ease-in-out infinite;
+}
+@keyframes dance {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  25% { transform: translateY(-12px) rotate(4deg); }
+  50% { transform: translateY(0) rotate(-2deg) scaleX(1.03); }
+  75% { transform: translateY(-8px) rotate(5deg); }
 }
 
 .event-card {
@@ -639,6 +657,8 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.5rem;
 }
 .event-time { color: #6b4a1e; font-weight: 500; font-size: 1rem; }
+.event-location { text-align: center; }
+.location-icon svg { width: 56px; height: auto; margin-bottom: 0.8rem; }
 
 /* ===== Lịch cưới ===== */
 .section.calendar { padding-top: 4rem; padding-bottom: 0; }
