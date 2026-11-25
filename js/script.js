@@ -13,9 +13,16 @@ const CONFIG = {
   const params = new URLSearchParams(window.location.search);
   let guest = (params.get("khach") || params.get("ten") || "").trim();
 
-  // Dạng gọn ?Anh+Nam (không có dấu =)
-  if (!guest && window.location.search.length > 1 && !window.location.search.includes("=")) {
-    guest = decodeURIComponent(window.location.search.slice(1).replace(/\+/g, " ")).trim();
+  // Dạng gọn ?Anh+Nam; bỏ qua tham số thêm của Facebook/Zalo (fbclid=..., utm_...)
+  if (!guest) {
+    const first = window.location.search.slice(1).split("&")[0];
+    if (first && !first.includes("=")) {
+      try {
+        guest = decodeURIComponent(first.replace(/\+/g, " ")).trim();
+      } catch (e) {
+        guest = "";
+      }
+    }
   }
 
   const name = guest || CONFIG.defaultGuest;
