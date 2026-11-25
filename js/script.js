@@ -9,9 +9,18 @@ const CONFIG = {
 // ======= TÊN KHÁCH MỜI THEO LINK =======
 // Thiệp mời chung:   https://ten-mien/
 // Mời đích danh:     https://ten-mien/?khach=Anh+Nam  (hoặc ?ten=... hoặc gọn: ?Anh+Nam)
+// Hoặc dạng hash:    https://ten-mien/#Anh-Nam
 (function setGuestName() {
   const params = new URLSearchParams(window.location.search);
   let guest = (params.get("khach") || params.get("ten") || "").trim();
+
+  if (!guest && window.location.hash.length > 1) {
+    try {
+      guest = decodeURIComponent(window.location.hash.slice(1)).replace(/-/g, " ").trim();
+    } catch (e) {
+      guest = "";
+    }
+  }
 
   // Dạng gọn ?Anh+Nam; bỏ qua tham số thêm của Facebook/Zalo (fbclid=..., utm_...)
   if (!guest) {
